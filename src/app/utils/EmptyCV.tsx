@@ -1,0 +1,31 @@
+const emptyCV={
+personalInfo:{
+    name:'',
+    role:'',
+    email:'',
+    phone:'',
+},
+summary:{
+sum:'',
+},
+experience:[{
+    id:'',
+    company:'',
+    title:'',
+    location:'',
+    date:'',
+},],
+education:[{
+    id:'',
+    school:'',
+    deg:'',
+    location:'',
+    date:'',
+},],
+skills:[{
+    id:'',
+    groupName:'',
+    skillSet:[],
+},],
+}
+export default emptyCV;
