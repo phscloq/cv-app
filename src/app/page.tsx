@@ -74,17 +74,45 @@ const handleAddEducation = ()=>{
     }))
     };
 
-/* const handleSkillChange =(text:string, id:any)=>{
+const handleSkillGroupNameChange =(e:any, id:any)=>{
 setCv((prevCv)=>{
- prevCv.skills.map((skillSet:any) => {
+  const updatedSkills= prevCv.skills.map((skillSet:any)=>{
     if(skillSet.id === id){
-      const updatedSkill = skillSet.skillSet.map((skillItem:any)=>{
-        if(skillItem.id===id)
-      })
+      return {
+        ...skillSet,
+        groupName: e.target.value
+      };
     }
-  })
-})
-} */
+    return skillSet;
+  });
+  return {...prevCv, skills: updatedSkills};
+});
+};
+const handleSkillChange = (e: any, groupId: any, skillIndex: any) => {
+  const { value } = e.target;
+
+  setCv((prevCv: any) => {
+    const updatedSkills = prevCv.skills.map((skillSet: any) => {
+      if (skillSet.id === groupId) {
+        const updatedSkillSet = skillSet.skillSet.map((skill: any, index: number) => {
+          if (index === skillIndex) {
+            return value;
+          }
+          return skill;
+        });
+
+        return {
+          ...skillSet,
+          skillSet: updatedSkillSet,
+        };
+      }
+      return skillSet;
+    });
+
+    return { ...prevCv, skills: updatedSkills };
+  });
+};
+
 
     const handleSkillAdd = (id:any) => {
       setCv((prevCv) => {
@@ -134,6 +162,7 @@ setCv((prevCv)=>{
 
   return (
     <main className='min-h-screen flex justify-center'> 
+
      <Form cv={cv} 
      onSummaryChange={handleSummaryChange}
      onPersonChange={handlePersonChange}
@@ -143,8 +172,11 @@ setCv((prevCv)=>{
      onEducationChange={handleEducationChange}
      onSkillSetAdd={handleAddSkillSet}
      onSkillAdd={handleSkillAdd}
+     onSkillSetChange={handleSkillGroupNameChange}
+     onSkillChange={handleSkillChange}
      />
      <Preview cv={cv} />
+   
     </main>
   )
 }

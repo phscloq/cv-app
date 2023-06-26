@@ -1,7 +1,8 @@
 
 import SkillsSet from "./SkillSet"
 
-export default function Skills({onSkillSetAdd, onSkillAdd, skills}:{onSkillSetAdd:any, onSkillAdd:any, skills:any}){
+export default function Skills({onSkillChange, onSkillSetChange, onSkillSetAdd, onSkillAdd, skills}:
+    {onSkillSetAdd:any, onSkillAdd:any, skills:any, onSkillSetChange:any, onSkillChange:any}){
 const SkillSets=skills.map((SkillSet:any)=>{
     return (
         <SkillsSet
@@ -9,6 +10,8 @@ const SkillSets=skills.map((SkillSet:any)=>{
         id={SkillSet.id}
         skillSet={SkillSet}
         onAdd={onSkillAdd}
+        onChange={onSkillSetChange}
+        onSkillChange={onSkillChange}
         />
     )
 })
