@@ -1,4 +1,4 @@
-export default function Preview({cv}:{cv:any}){
+export default function Preview({cv, preview}:{cv:any, preview:boolean}){
     const { personalInfo, summary, experience, education, skills } = cv;
 
 const allExperience= experience.map((experienceItem:any)=>{
@@ -9,8 +9,8 @@ const allExperience= experience.map((experienceItem:any)=>{
                         <p>{experienceItem.title=='' ? 'Title': experienceItem.title}</p>
                         </div>
                         <div>
-                        <p>{experienceItem.location=='' ? 'Location': experienceItem.location}</p>
-                        <p>{experienceItem.date=='' ? 'dd/MM/YYYY': experienceItem.date}</p>
+                        <p className="text-right">{experienceItem.location=='' ? 'Location': experienceItem.location}</p>
+                        <p className="text-right break-all overflow-wrap">{experienceItem.date=='' ? 'Start/Finish': experienceItem.date}</p>
                         </div>
                     </div>
                 )
@@ -24,8 +24,8 @@ const allEducation= education.map((educationItem:any)=>{
             <p>{educationItem.deg=='' ? 'Degree': educationItem.deg}</p>
             </div>
             <div>
-            <p>{educationItem.location=='' ? 'Location': educationItem.location}</p>
-            <p>{educationItem.date=='' ? 'dd/MM/YYYY': educationItem.date}</p>
+            <p className="text-right">{educationItem.location=='' ? 'Location': educationItem.location}</p>
+            <p>{educationItem.date=='' ? 'Start/Finish': educationItem.date}</p>
             </div>
         </div>
     )
@@ -46,7 +46,8 @@ const allSkills= skills.map((skillItem:any)=>{
 })
 
     return (
-      <div className="shadow-custom w-2/4 my-24 mx-24 p-8 bg-stone-50 flex-1 h-fit">
+      <div className={`${preview ? '': 'hidden'}  max-w-[100%] mt-3  shadow-custom 
+      sm:w-2/4 sm:my-24 sm:mx-24 sm:block p-8 bg-stone-50 sm:flex-1 sm:h-fit`}>
         <div className="text-center">
             <div className=""> 
                 <h1 className="text-6xl">{personalInfo.name=='' ? 'Your Name': personalInfo.name}</h1>

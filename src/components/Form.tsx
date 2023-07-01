@@ -9,15 +9,16 @@ import Skills from "./Skills";
 
 export default function Form({cv, onSummaryChange, onPersonChange,
     onExperienceAdd, onEducationAdd, onExperienceChange, 
-    onEducationChange, onSkillSetAdd, onSkillAdd, onSkillSetChange, onSkillChange}:
+    onEducationChange, onSkillSetAdd, onSkillAdd, onSkillSetChange, onSkillChange, preview}:
     {cv:any, onSummaryChange:any, onPersonChange:any, onExperienceAdd:any, onEducationAdd:any, 
         onExperienceChange:any, onEducationChange:any, onSkillSetAdd:any, onSkillAdd:any, onSkillSetChange:any,
-    onSkillChange:any
+    onSkillChange:any, preview:boolean
     }){
 
 
     return (
-    <div className="flex flex-col items-center  my-24 mx-24 border-solid border-2 border-black bg-stone-50	flex-1 w-2/4">
+    <div className={`${preview ? 'hidden':''} mt-3 flex flex-col items-center  max-w-[100%] border-solid border-2 border-black bg-stone-50 rounded-xl 
+    sm:block sm:flex-1  sm:my-24 sm:mx-24 sm:w-2/4`}>
       
 
     <GeneralInformation info={cv.personalInfo}
