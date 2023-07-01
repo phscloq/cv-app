@@ -18,10 +18,10 @@ const SkillSets=skills.map((SkillSet:any)=>{
 
 
 return (
-<div className="w-full border-0 border-t-2 border-t-zinc-900 border-solid">
+<div className="w-full mt-2.5  border-0 border-t-2 border-t-zinc-900 border-solid">
     <h3 className="text-center text-2xl font-bold">Skills</h3>
     {SkillSets}
-    <button onClick={onSkillSetAdd} className="text-3xl bg-slate-300 px-2">+</button>
+    <button onClick={onSkillSetAdd} className="text-3xl m-2 bg-slate-300 px-2">New Group</button>
 </div>
 
 )

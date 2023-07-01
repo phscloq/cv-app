@@ -10,7 +10,7 @@ export default function GeneralInformation({info, onPersonChange}:{info:any, onP
 
     return (
 
-        <div className={`w-full p-3 text-red-600 flex flex-col `}>
+        <div className={`w-full p-3  flex flex-col `}>
             <input  className="focus:outline-none text-center bg-transparent placeholder:text-red-600 text-3xl" 
             placeholder="Your Name" 
             value={info.name}
