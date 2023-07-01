@@ -1,9 +1,11 @@
+import { v4 as uuidv4 } from 'uuid';
 export default function Preview({cv, preview}:{cv:any, preview:boolean}){
     const { personalInfo, summary, experience, education, skills } = cv;
 
 const allExperience= experience.map((experienceItem:any)=>{
                 return(
-                    <div className="flex justify-between mt-4">
+                    <div key={uuidv4()} 
+                    className="flex justify-between mt-4">
                         <div>
                         <p className="font-bold text-xl">{experienceItem.company=='' ? 'Company': experienceItem.company}</p>
                         <p>{experienceItem.title=='' ? 'Title': experienceItem.title}</p>
@@ -18,7 +20,8 @@ const allExperience= experience.map((experienceItem:any)=>{
 
 const allEducation= education.map((educationItem:any)=>{
     return(
-        <div className="flex justify-between  mt-4">
+        <div key={uuidv4()} 
+         className="flex justify-between  mt-4">
             <div>
             <p className="font-bold text-xl">{educationItem.school=='' ? 'School': educationItem.school}</p>
             <p>{educationItem.deg=='' ? 'Degree': educationItem.deg}</p>
@@ -32,7 +35,7 @@ const allEducation= education.map((educationItem:any)=>{
 })
 const allSkills= skills.map((skillItem:any)=>{
     return(
-        <div className="border-0 border-solid border-b-2 border-b-zinc-900">
+        <div  key={uuidv4()} className="border-0 border-solid border-b-2 border-b-zinc-900">
             <div>
             <p>{skillItem.groupName == '' ? 'Group Name:' : skillItem.groupName+ ': '}</p>
             </div>
