@@ -14,15 +14,26 @@ return (
 )
 })
 return (
-    <div className="pb-2 text-red-600 flex flex-wrap gap-2">
-    <input className="focus:outline-none text-center bg-slate-300 m-2 placeholder:text-red-600" 
+    <div className="pb-2 m-2  flex  flex-col gap-4">
+    <div>
+    <input 
+    className="focus:outline-none bg-slate-300 text-xl" 
             type="text" placeholder="GroupName"
             name='groupName'
             value={skillSet.groupName}
             onChange={(e)=>onChange(e,id)}
             />
+    <button className='bg-slate-300 rounded-full px-2 font-bold text-2xl ml-2' onClick={()=>onAdd(id)}>+</button>
+    </div>
+    
+            <div className=" flex flex-wrap gap-2">
             {LoadSkills}
-            <button className='bg-slate-300' onClick={()=>onAdd(id)}>Add</button>
+           
+            </div>
+          
+          
+         
+           
     </div>
 )
 }
