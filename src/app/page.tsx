@@ -6,6 +6,17 @@ import { useState } from 'react'
 import emptyCV from './utils/EmptyCV'
 export default function Home() {
 const [cv, setCv] = useState(emptyCV)
+const [preview, setPreview] = useState(false)
+
+const handlePreview=()=>{
+
+  if(preview){
+    setPreview(false);
+  }
+  else{
+    setPreview(true);
+  }
+}
 
 const handleSummaryChange = (text: string) => {
   setCv((prevCv) => ({
@@ -161,9 +172,29 @@ const handleSkillChange = (e: any, groupId: any, skillIndex: any) => {
   
 
   return (
-    <main className='min-h-screen flex justify-center'> 
-
-     <Form cv={cv} 
+    <main className='flex-col min-h-screen flex justify-center mt-3'>
+      <div className='text-center text-4xl'>
+        <h1>CV Generator</h1>
+        </div> 
+    <div className='ml-4 flex  flex-col sm:hidden'
+    >
+    <p className='ml-2'>
+      Preview <label className='font-bold'>{preview ? 'on' : 'off'}</label>
+    </p>
+     <input
+     type='checkbox' 
+     checked={preview}
+     onChange={handlePreview}
+     className=' mt-1
+       relative h-10 bg-white w-28  shadow-inner shadow-black appearance-none rounded-2xl
+      before:bg-slate-500 before:absolute before:h-10 before:w-10 before:rounded-2xl
+      ease-in duration-500
+      before:scale-110 before:ease-in before:shadow-lg before:duration-500 before:left-0
+      checked:before:left-20 checked:bg-slate-500 checked:ease-in checked:duration-500'
+     />
+    </div>
+    <div className='flex p-2.5 sm:p-0'>
+    <Form cv={cv} 
      onSummaryChange={handleSummaryChange}
      onPersonChange={handlePersonChange}
      onExperienceAdd={handleAddExperience}
@@ -174,8 +205,14 @@ const handleSkillChange = (e: any, groupId: any, skillIndex: any) => {
      onSkillAdd={handleSkillAdd}
      onSkillSetChange={handleSkillGroupNameChange}
      onSkillChange={handleSkillChange}
+     preview={preview}
      />
-     <Preview cv={cv} />
+     <Preview cv={cv} 
+          preview={preview}
+
+     />
+    </div>
+    
    
     </main>
   )
