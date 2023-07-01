@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`sm:${inter.className} min-h-screen`}>{children}</body>
+      <head>
+        <title>Cv-App</title>
+      </head>
+      <body className={`sm:${inter.className} min-h-screen`}>
+        {children}
+        <Analytics />
+        </body>
     </html>
   )
 }
